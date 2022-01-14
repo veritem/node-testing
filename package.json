@@ -1,0 +1,41 @@
+{
+  "name": "tdd-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc -p .",
+    "test": "jest",
+    "format": "prettier --write '**/*.{js,json,md}'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veritem/tdd-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/veritem/tdd-nodejs/issues"
+  },
+  "homepage": "https://github.com/veritem/tdd-nodejs#readme",
+  "dependencies": {
+    "@prisma/client": "^3.8.0",
+    "express": "^4.17.2",
+    "jest": "^27.4.7"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.8",
+    "@types/supertest": "^2.0.11",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "supertest": "^6.2.1",
+    "ts-jest": "^27.1.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
