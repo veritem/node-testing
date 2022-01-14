@@ -6,6 +6,6 @@ describe("check test env", () => {
 
         const app = createServer()
 
-        await (await supatest(app).get("/healthcheck").expect(200))
+        await supatest(app).get("/healthcheck").expect(200)
     });
 })
