@@ -7,8 +7,8 @@
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
     "build": "tsc -p .",
-    "test": "jest",
-    "format": "prettier --write '**/*.{js,json,md}'"
+    "test": "jest --detectOpenHandles",
+    "format": "prettier --write '**/*.{js,ts,json,md}'"
   },
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/veritem/tdd-nodejs#readme",
   "dependencies": {
-    "@prisma/client": "^3.8.0",
+    "@prisma/client": "^3.8.1",
     "express": "^4.17.2",
     "jest": "^27.4.7"
   },
