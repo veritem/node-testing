@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { prisma } from "./../index";
 
 export async function createUserHandler(req: Request, res: Response) {
-  const { name, email } = req.body;
+  const { name, email, username } = req.body;
 
   if (!name || !email) {
     return res.status(400).send({
@@ -10,7 +10,7 @@ export async function createUserHandler(req: Request, res: Response) {
     });
   }
   try {
-    let user = await prisma.user.create({ data: { name, email } });
+    let user = await prisma.user.create({ data: { name, email, username } });
     return res.status(201).send(user);
   } catch (error) {
     return res.status(500).send({

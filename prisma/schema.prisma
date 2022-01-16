@@ -10,19 +10,16 @@ datasource db {
   url      = "file:./dev.db"
 }
 
-
-
-
 model User {
-  id    Int     @default(autoincrement()) @id
-  username String @unique
-  name  String?
-  email String  @unique
-  posts Post[]
+  id       Int     @id @default(autoincrement())
+  username String  @unique
+  name     String?
+  email    String  @unique
+  posts    Post[]
 }
 
 model Post {
-  id        Int      @default(autoincrement()) @id
+  id        Int      @id @default(autoincrement())
   published Boolean? @default(false)
   title     String
   content   String?
