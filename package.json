@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.ts",
     "build": "tsc -p .",
     "test": "jest --detectOpenHandles",
-    "test:watch": "jest --watchAll",
+    "test:watch": "jest --detectOpenHandles --watchAll",
     "format": "prettier --write '**/*.{js,ts,json,md}'"
   },
   "repository": {
