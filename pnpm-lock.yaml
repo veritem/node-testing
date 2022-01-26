@@ -1,11 +1,14 @@
 lockfileVersion: 5.3
 
 specifiers:
+  '@faker-js/faker': ^6.0.0-alpha.5
   '@prisma/client': ^3.8.1
   '@types/express': ^4.17.13
   '@types/jest': ^27.4.0
   '@types/node': ^17.0.8
+  '@types/node-fetch': ^3.0.3
   '@types/supertest': ^2.0.11
+  '@types/uuid': ^8.3.4
   express: ^4.17.2
   jest: ^27.4.7
   jest-mock-extended: ^2.0.4
@@ -15,6 +18,8 @@ specifiers:
   ts-jest: ^27.1.2
   ts-node: ^10.4.0
   typescript: ^4.5.4
+  undici: ^4.12.2
+  uuid: ^8.3.2
 
 dependencies:
   '@prisma/client': 3.8.1
@@ -22,10 +27,13 @@ dependencies:
   jest: 27.4.7_ts-node@10.4.0
 
 devDependencies:
+  '@faker-js/faker': 6.0.0-alpha.5
   '@types/express': 4.17.13
   '@types/jest': 27.4.0
   '@types/node': 17.0.8
+  '@types/node-fetch': 3.0.3
   '@types/supertest': 2.0.11
+  '@types/uuid': 8.3.4
   jest-mock-extended: 2.0.4_jest@27.4.7+typescript@4.5.4
   nodemon: 2.0.15
   prettier: 2.5.1
@@ -33,6 +41,8 @@ devDependencies:
   ts-jest: 27.1.2_9364f2ad0b7b67f00a4d081c662c6871
   ts-node: 10.4.0_faf01e1d5a40372a98081522dcafc186
   typescript: 4.5.4
+  undici: 4.12.2
+  uuid: 8.3.2
 
 packages:
 
@@ -369,6 +379,11 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       '@cspotcode/source-map-consumer': 0.8.0
+    dev: true
+
+  /@faker-js/faker/6.0.0-alpha.5:
+    resolution: {integrity: sha512-8Is/xFxNgricqmhQR/AJ4Vi0cKzSR7FcpE0ImG9dWciuSxUkyCiK+B5/hTQP8jrVbtgTjpFC1AaTCnALJOBDmw==}
+    engines: {node: '>=12.0.0', npm: '>=7.0.0'}
     dev: true
 
   /@istanbuljs/load-nyc-config/1.1.0:
@@ -732,6 +747,15 @@ packages:
     resolution: {integrity: sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==}
     dev: true
 
+  /@types/node-fetch/3.0.3:
+    resolution: {integrity: sha512-HhggYPH5N+AQe/OmN6fmhKmRRt2XuNJow+R3pQwJxOOF9GuwM7O2mheyGeIrs5MOIeNjDEdgdoyHBOrFeJBR3g==}
+    deprecated: This is a stub types definition. node-fetch provides its own type definitions, so you do not need this installed.
+    dependencies:
+      node-fetch: 2.6.7
+    transitivePeerDependencies:
+      - encoding
+    dev: true
+
   /@types/node/17.0.8:
     resolution: {integrity: sha512-YofkM6fGv4gDJq78g4j0mMuGMkZVxZDgtU0JRdx6FgiJDG+0fY0GKVolOV8WqVmEhLCXkQRjwDdKyPxJp/uucg==}
 
@@ -769,6 +793,10 @@ packages:
     resolution: {integrity: sha512-uci4Esokrw9qGb9bvhhSVEjd6rkny/dk5PK/Qz4yxKiyppEI+dOPlNrZBahE3i+PoKFYyDxChVXZ/ysS/nrm1Q==}
     dependencies:
       '@types/superagent': 4.1.14
+    dev: true
+
+  /@types/uuid/8.3.4:
+    resolution: {integrity: sha512-c/I8ZRb51j+pYGAu5CrFMRxqZ2ke4y2grEBO5AUjgSkSk+qT2Ea+OdWElz/OiMf5MNpn2b17kuVBwZLQJXzihw==}
     dev: true
 
   /@types/yargs-parser/20.2.1:
@@ -2706,6 +2734,18 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
+  /node-fetch/2.6.7:
+    resolution: {integrity: sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==}
+    engines: {node: 4.x || >=6.0.0}
+    peerDependencies:
+      encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
+    dependencies:
+      whatwg-url: 5.0.0
+    dev: true
+
   /node-int64/0.4.0:
     resolution: {integrity: sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs=}
     dev: false
@@ -3380,6 +3420,10 @@ packages:
       universalify: 0.1.2
     dev: false
 
+  /tr46/0.0.3:
+    resolution: {integrity: sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=}
+    dev: true
+
   /tr46/2.1.0:
     resolution: {integrity: sha512-15Ih7phfcdP5YxqiB+iDtLoaTz4Nd35+IiAv0kQ5FNKHzXgdWqPoTIqEDDJmXceQt4JZk6lVPT8lnDlPpGDppw==}
     engines: {node: '>=8'}
@@ -3504,6 +3548,11 @@ packages:
     resolution: {integrity: sha512-WxONCrssBM8TSPRqN5EmsjVrsv4A8X12J4ArBiiayv3DyyG3ZlIg6yysuuSYdZsVz3TKcTg2fd//Ujd4CHV1iA==}
     dev: true
 
+  /undici/4.12.2:
+    resolution: {integrity: sha512-RZj6SbkQFs5O/pJCboGEo6l5DTCe3Zg4r/8Z/0/2qnIv08+s6zL4akohOPMYWKc3mzwv15WTvsfMWaafZcvYoQ==}
+    engines: {node: '>=12.18'}
+    dev: true
+
   /unique-string/2.0.0:
     resolution: {integrity: sha512-uNaeirEPvpZWSgzwsPGtU2zVSTrn/8L5q/IexZmH0eH6SA73CmAA5U4GwORTxQAZs95TAXLNqeLoPPNO5gZfWg==}
     engines: {node: '>=8'}
@@ -3557,6 +3606,11 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: false
 
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: true
+
   /v8-to-istanbul/8.1.1:
     resolution: {integrity: sha512-FGtKtv3xIpR6BYhvgH8MI/y78oT7d8Au3ww4QIxymrCtZEh5b8gCw2siywE+puhEmuWKDtmfrvF5UlB298ut3w==}
     engines: {node: '>=10.12.0'}
@@ -3590,6 +3644,10 @@ packages:
       makeerror: 1.0.12
     dev: false
 
+  /webidl-conversions/3.0.1:
+    resolution: {integrity: sha1-JFNCdeKnvGvnvIZhHMFq4KVlSHE=}
+    dev: true
+
   /webidl-conversions/5.0.0:
     resolution: {integrity: sha512-VlZwKPCkYKxQgeSbH5EyngOmRp7Ww7I9rQLERETtf5ofd9pGeswWiOtogpEO850jziPRarreGxn5QIiTqpb2wA==}
     engines: {node: '>=8'}
@@ -3609,6 +3667,13 @@ packages:
   /whatwg-mimetype/2.3.0:
     resolution: {integrity: sha512-M4yMwr6mAnQz76TbJm914+gPpB/nCwvZbJU28cUD6dR004SAxDLOOSUaB1JDRqLtaOV/vi0IC5lEAGFgrjGv/g==}
     dev: false
+
+  /whatwg-url/5.0.0:
+    resolution: {integrity: sha1-lmRU6HZUYuN2RNNib2dCzotwll0=}
+    dependencies:
+      tr46: 0.0.3
+      webidl-conversions: 3.0.1
+    dev: true
 
   /whatwg-url/8.7.0:
     resolution: {integrity: sha512-gAojqb/m9Q8a5IV96E3fHJM70AzCkgt4uXYX2O7EmuyOnLrViCQlsEBmF9UQIu3/aeAIp2U17rtbpZWNntQqdg==}
