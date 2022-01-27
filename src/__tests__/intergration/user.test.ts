@@ -1,12 +1,15 @@
-import { request } from 'undici'
-import prisma from "../../client"
+import faker from "@faker-js/faker"
+import { request } from "undici"
+import { createTestServer } from "../../utils/test-utils"
+
+const { serverURL, prisma } = createTestServer();
 
 beforeAll(async () => {
   await prisma.user.create({
     data: {
-      email: "test1@test.com",
-      name: "test",
-      username: "test",
+      email: faker.internet.email(),
+      name: faker.name.findName(),
+      username: faker.internet.userName(),
     },
   });
 
@@ -15,78 +18,79 @@ beforeAll(async () => {
 
 describe("User API", () => {
   describe("GET /api/users", () => {
-    it("Should return users", async() => {
+    it("Should return users", async () => {
+      const { statusCode, body } = await request(`${serverURL}/api/users`);
 
-      const {statusCode, body} = await request("http://localhost:3000/api/users");
+      const respData = await body.json();
 
       expect(statusCode).toBe(200);
-      expect(typeof body).toBe("object");
-
-
-    //   await request(app)
-    //     .get("/api/users")
-    //     .set("Accept", "application/json")
-    //     .expect("Content-Type", /json/)
-    //     .expect(200)
-    //     // .then((response) => {
-    //     //   expect(response.body).toEqual([
-    //     //     {
-    //     //       id: expect.any(String),
-    //     //       email: expect.any(String),
-    //     //       name: expect.any(String),
-    //     //       username: expect.any(String),
-    //     //     },
-    //     //   ]);
-    //     });
+      expect(typeof respData).toBe("object");
     });
   });
 
-  // describe("GET /api/users/{id}", () => {
-    // it("Should return user", async () => {
-      // await request(app)
-      //   .get("/api/users/1")
-      //   .set("Accept", "application/json")
-      //   .expect("Content-Type", /json/)
-      //   .expect(200)
-      //   // .then((response) => {
-      //   //   expect(response.body).toEqual({
-      //   //     id: expect.any(String),
-      //   //     email: expect.any(String),
-      //   //     name: expect.any(String),
-      //   //     username: expect.any(String),
-      //   //   });
-      //   // });
-    // });
-  // });
+  describe("GET /api/users/{id}", () => {
+    it("Should return user", async () => {
+      const { statusCode, body } = await request(`${serverURL}/api/users/3`);
 
-  // describe("POST /api/users", () => {
-    // it("Should create user", async() => {
-    //   await request(app)
-    //     .post("/api/users")
-    //     .send({
-    //       email: "tester@test.com",
-    //       name: "tester",
-    //       username: "tester",
-    //     })
-    //     .set("Accept", "application/json")
-    //     .expect("Content-Type", /json/)
-    //     .expect(200)
-    //     // .then((response) => {
-    //     //   expect(response.body).toEqual({
-    //     //     id: expect.any(String),
-    //     //     email: expect.any(String),
-    //     //     name: expect.any(String),
-    //     //     username: expect.any(String),
-    //     //   });
-    //     // });
-    // // });
-  // });
+      const respData = await body.json();
+
+
+      expect(statusCode).toBe(200);
+      expect(typeof respData).toBe("object");
+    });
+
+
+    it("Should return 404 if user not found", async () => {
+      const { statusCode } = await request(`${serverURL}/api/users/200000`);
+
+      expect(statusCode).toBe(404);
+
+  });
+  });
+
+
+  describe("POST /api/users", () => {
+    it.skip("Should fail if user exists", async () => {
+      const first = await request(`${serverURL}/api/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "test",
+          email: "yeee@yo.dev",
+          username: "yeee",
+        }),
+      });
+
+      const { statusCode, body
+      } = await request(`${serverURL}/api/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "test",
+          email: "yeee@yo.dev",
+          username: "yeee",
+        }),
+      });
+
+
+      const respData = await body.json();
+
+
+      expect(statusCode).toBe(201);
+      expect(typeof respData).toBe("object");
+    });
+  });
+
 });
 
 afterAll(async () => {
-  const deleteUsers = prisma.user.deleteMany();
+  // const deleteUsers = prisma.user.deleteMany();
 
-  await prisma.$transaction([deleteUsers]);
+  // await prisma.$transaction([deleteUsers]);
 
   await prisma.$disconnect();
 });
