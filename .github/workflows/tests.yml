@@ -17,5 +17,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-    - name: Install dependencies
+    - name: install
       run: pnpm install
+    - name: tests
+      run: pnpm test
