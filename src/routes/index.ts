@@ -9,4 +9,8 @@ export default function routes(app: Express) {
   app.get("/api/users/:id", (req, res) => getUserHandler(req, res));
 
   app.post("/api/users", (req, res) => createUserHandler(req, res));
+
+  app.get("/api/posts", (req, res) => getPostsHandler(req, res));
+  
+  app.post("/api/posts", (req, res) => createPostHandler(req, res));
 }
