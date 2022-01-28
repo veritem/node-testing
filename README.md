@@ -1,16 +1,6 @@
-### node-testing
+### Testing
 
-[![tests](https://github.com/veritem/node-testing/actions/workflows/tests.yml/badge.svg)](https://github.com/veritem/node-testing/actions/workflows/tests.yml)
-
-
-#### Tech stack
-
-- Express
-- Prisma
-- Sqlite
-- TypeScript(of course)
-
-#### Getting started
+## Getting started
 
 - Clone the repository:
 - Install the dependencies:

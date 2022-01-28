@@ -1,5 +1,5 @@
 import { Express, Request, Response } from "express"
-import { createPostHandler, getPostsHandler } from './posts'
+import { createPostHandler, getPostsHandler } from "./posts"
 import { createUserHandler, getUserHandler, getUsersHandler } from "./users"
 
 export default function routes(app: Express) {

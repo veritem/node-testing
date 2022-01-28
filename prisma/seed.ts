@@ -63,9 +63,9 @@ async function main() {
    await  prisma.user.create({data: user})
  }
 
- for (const post of posts) {
-    await prisma.post.create({data: post})
- }
+//  for (const post of posts) {
+//     await prisma.post.create({data: post})
+//  }
 
 }
 
