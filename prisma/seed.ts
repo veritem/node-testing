@@ -28,7 +28,7 @@ import prisma from "../src/client"
    {
       title: faker.lorem.sentence(),
       content: faker.lorem.paragraph(),
-      published: faker.random.boolean(),
+      published: faker.datatype.boolean(),
       authorId: 1,
    },
    {
