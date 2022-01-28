@@ -10,8 +10,7 @@
     "test": "jest -i",
     "test:watch": "jest --detectOpenHandles --maxWorkers=1 --watchAll --verbose",
     "format": "prettier --write '**/*.{js,ts,json,md}'",
-    "seed": "ts-node --compiler-options '{\"module\": \"CommonJS\"}",
-    "postinstall": "prisma generate"
+    "seed": "ts-node --compiler-options '{\"module\": \"CommonJS\"}"
   },
   "repository": {
     "type": "git",
