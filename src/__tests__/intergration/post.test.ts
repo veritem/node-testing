@@ -1,5 +1,5 @@
 describe("GET /api/post", () => {
-  test("Should be fixed", () => {
+  test.skip("Should return posts", () => {
     expect(true).toBe(true);
   });
 });

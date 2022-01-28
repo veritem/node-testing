@@ -4,6 +4,13 @@ import { createTestServer } from "../../utils/test-utils"
 
 const { serverURL, prisma } = createTestServer();
 
+const userStructure = {
+  id: expect.any(Number),
+  email: expect.any(String),
+  name: expect.any(String),
+  username: expect.any(String),
+};
+
 beforeAll(async () => {
   await prisma.user.create({
     data: {
@@ -19,12 +26,19 @@ beforeAll(async () => {
 describe("User API", () => {
   describe("GET /api/users", () => {
     it("Should return users", async () => {
-      const { statusCode, body } = await request(`${serverURL}/api/users`);
+      const { statusCode, body, headers } = await request(`${serverURL}/api/users`);
 
       const respData = await body.json();
 
+
+      expect(headers["content-type"]).toMatch(/application\/json/);
+
+
       expect(statusCode).toBe(200);
-      expect(typeof respData).toBe("object");
+
+      for (const users of respData) {
+        expect(users).toMatchObject(userStructure);
+      }
     });
   });
 
@@ -34,20 +48,18 @@ describe("User API", () => {
 
       const respData = await body.json();
 
-
       expect(statusCode).toBe(200);
       expect(typeof respData).toBe("object");
+
+      expect(respData).toMatchObject(userStructure);
     });
 
-
     it("Should return 404 if user not found", async () => {
-      const { statusCode } = await request(`${serverURL}/api/users/200000`);
+      const { statusCode } = await request(`${serverURL}/api/users/2000000000000`);
 
       expect(statusCode).toBe(404);
-
+    });
   });
-  });
-
 
   describe("POST /api/users", () => {
     it.skip("Should fail if user exists", async () => {
@@ -63,8 +75,7 @@ describe("User API", () => {
         }),
       });
 
-      const { statusCode, body
-      } = await request(`${serverURL}/api/users`, {
+      const { statusCode, body } = await request(`${serverURL}/api/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,15 +87,12 @@ describe("User API", () => {
         }),
       });
 
-
       const respData = await body.json();
-
 
       expect(statusCode).toBe(201);
       expect(typeof respData).toBe("object");
     });
   });
-
 });
 
 afterAll(async () => {

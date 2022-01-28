@@ -16,12 +16,11 @@ export async function createUserHandler(req: Request, res: Response) {
     },
   });
 
-  if(user) {
+  if (user) {
     return res.status(400).send({
       message: "User already exists",
     });
   }
-
 
   try {
     let user = await prisma.user.create({ data: { name, email, username } });
@@ -39,24 +38,23 @@ export async function getUsersHandler(req: Request, res: Response) {
   res.json(users);
 }
 
-
 export async function getUserHandler(req: Request, res: Response) {
   const { id } = req.params;
 
-  if(!id) {
+  if (!id) {
     return res.status(400).send({
-      message: "Id is required"
-    })
+      message: "Id is required",
+    });
   }
 
   const user = await prisma.user.findFirst({
     where: { id: parseInt(id) },
   });
 
-  if(!user) {
+  if (!user) {
     return res.status(404).send({
-      message: "User not found"
-    })
+      message: "User not found",
+    });
   }
 
   res.json(user);
