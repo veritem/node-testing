@@ -1,6 +1,6 @@
-import faker from "@faker-js/faker"
-import { request } from "undici"
-import { createTestServer } from "../../utils/test-utils"
+import faker from "@faker-js/faker";
+import { request } from "undici";
+import { createTestServer } from "../../utils/test-utils";
 
 const { serverURL, prisma } = createTestServer();
 
@@ -26,13 +26,13 @@ beforeAll(async () => {
 describe("Post API", () => {
   describe("GET /api/posts", () => {
     it("Should return posts", async () => {
-      const { statusCode, body, headers } = await request(`${serverURL}/api/posts`);
+      const { statusCode, body, headers } = await request(
+        `${serverURL}/api/posts`
+      );
 
       const respData = await body.json();
 
-
       expect(headers["content-type"]).toMatch(/application\/json/);
-
 
       expect(statusCode).toBe(200);
 
@@ -44,7 +44,6 @@ describe("Post API", () => {
 
   describe("POST /api/posts", () => {
     it("Should create Post", async () => {
-
       const { statusCode, body } = await request(`${serverURL}/api/posts`, {
         method: "POST",
         headers: {
